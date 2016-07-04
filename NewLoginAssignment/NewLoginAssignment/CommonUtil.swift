@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class CommonUtil {
-    public static func isEmailFormat(email: String) -> Bool{
+class CommonUtil {
+    static func isEmailFormat(email: String) -> Bool{
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluateWithObject(email)
     }
     
-    public static func isPasswordAlphanumeric(password: String) -> Bool {
+    static func isPasswordAlphanumeric(password: String) -> Bool {
         if password.rangeOfCharacterFromSet(.letterCharacterSet(), options: .LiteralSearch, range: nil) == nil || password.rangeOfCharacterFromSet(.decimalDigitCharacterSet(), options: .LiteralSearch, range: nil) == nil {
             return false
         }

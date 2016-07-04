@@ -18,15 +18,15 @@ class MainViewController: UIViewController {
         self.view.viewWithTag(1)?.hidden = true
         self.hideLogoutButton()
         
-        let storedUsername = NSUserDefaults.standardUserDefaults().objectForKey("UserName") as? String ?? "N.A."
+        let storedUsername = NSUserDefaults.standardUserDefaults().objectForKey(usernameKey) as? String ?? "N.A."
         let storedPassword = MyKeychainWrapper.myObjectForKey("v_Data") as? String ?? "N.A."
         
         if storedUsername == actualUsername && storedPassword == actualPassword {
             //display first page
-            NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(self.showFirstPage), userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(initialIntervalTime, target: self, selector: #selector(self.showFirstPage), userInfo: nil, repeats: false)
         } else {
             //display login page
-            NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(self.checkUserLogin), userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(initialIntervalTime, target: self, selector: #selector(self.checkUserLogin), userInfo: nil, repeats: false)
         }
     }
     
@@ -58,7 +58,7 @@ class MainViewController: UIViewController {
     
     @IBAction func performUserLogout(){
         //remove stored credentials
-        NSUserDefaults.standardUserDefaults().setObject("", forKey: "UserName")
+        NSUserDefaults.standardUserDefaults().setObject("", forKey: usernameKey)
         MyKeychainWrapper.mySetObject("", forKey: kSecValueData)
         self.performSegueWithIdentifier("loginView", sender: self)
     }

@@ -8,3 +8,5 @@
 
 let actualUsername = "rohan@gmail.com"
 let actualPassword = "rohan123"
+let initialIntervalTime = 2.0
+let usernameKey = "UserName"

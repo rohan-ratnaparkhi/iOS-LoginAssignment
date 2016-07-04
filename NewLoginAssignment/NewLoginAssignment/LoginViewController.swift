@@ -45,7 +45,7 @@ class LoginViewController: UIViewController{
         }
         
         if uEmail == actualUsername && uPwd == actualPassword {
-            NSUserDefaults.standardUserDefaults().setObject(uEmail, forKey: "UserName")
+            NSUserDefaults.standardUserDefaults().setObject(uEmail, forKey: usernameKey)
             MyKeychainWrapper.mySetObject(uPwd, forKey: kSecValueData)
             MyKeychainWrapper.writeToKeychain()
             authenticationSuccessful = true
