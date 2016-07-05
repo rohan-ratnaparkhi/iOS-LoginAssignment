@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.viewWithTag(1)?.hidden = true
-        self.hideLogoutButton()
+        self.navigationController?.navigationBarHidden = true
         
         let storedUsername = NSUserDefaults.standardUserDefaults().objectForKey(usernameKey) as? String ?? "N.A."
         let storedPassword = MyKeychainWrapper.myObjectForKey("v_Data") as? String ?? "N.A."
@@ -43,17 +43,7 @@ class MainViewController: UIViewController {
         self.view.viewWithTag(3)?.hidden = true
         self.view.viewWithTag(4)?.hidden = true
         self.view.viewWithTag(1)?.hidden = false
-        self.showEnabledLogoutButton()
-    }
-    
-    func hideLogoutButton(){
-        self.navigationItem.rightBarButtonItem?.enabled = false
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clearColor()
-    }
-    
-    func showEnabledLogoutButton(){
-        self.navigationItem.rightBarButtonItem?.enabled = true
-        self.navigationItem.rightBarButtonItem?.tintColor = nil
+        self.navigationController?.navigationBarHidden = false
     }
     
     @IBAction func performUserLogout(){
