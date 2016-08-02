@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let MyKeychainWrapper = KeychainWrapper()
+    let keychainWrapper = KeychainWrapper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,15 +18,15 @@ class MainViewController: UIViewController {
         self.view.viewWithTag(1)?.hidden = true
         self.navigationController?.navigationBarHidden = true
         
-        let storedUsername = NSUserDefaults.standardUserDefaults().objectForKey(usernameKey) as? String ?? "N.A."
-        let storedPassword = MyKeychainWrapper.myObjectForKey("v_Data") as? String ?? "N.A."
+        let storedUsername = NSUserDefaults.standardUserDefaults().objectForKey(Constants.Keys.userName) as? String ?? "N.A."
+        let storedPassword = keychainWrapper.getObjectForKey("v_Data") as? String ?? "N.A."
         
-        if storedUsername == actualUsername && storedPassword == actualPassword {
+        if storedUsername == Constants.StoredAppUser.userName && storedPassword == Constants.StoredAppUser.password {
             //display first page
-            NSTimer.scheduledTimerWithTimeInterval(initialIntervalTime, target: self, selector: #selector(self.showFirstPage), userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(Constants.Time.initialIntervalTime, target: self, selector: #selector(self.showFirstPage), userInfo: nil, repeats: false)
         } else {
             //display login page
-            NSTimer.scheduledTimerWithTimeInterval(initialIntervalTime, target: self, selector: #selector(self.checkUserLogin), userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(Constants.Time.initialIntervalTime, target: self, selector: #selector(self.checkUserLogin), userInfo: nil, repeats: false)
         }
     }
     
@@ -48,8 +48,8 @@ class MainViewController: UIViewController {
     
     @IBAction func performUserLogout(){
         //remove stored credentials
-        NSUserDefaults.standardUserDefaults().setObject("", forKey: usernameKey)
-        MyKeychainWrapper.mySetObject("", forKey: kSecValueData)
+        NSUserDefaults.standardUserDefaults().setObject("", forKey: Constants.Keys.userName)
+        keychainWrapper.setObject("", forKey: kSecValueData)
         self.performSegueWithIdentifier("loginView", sender: self)
     }
 }

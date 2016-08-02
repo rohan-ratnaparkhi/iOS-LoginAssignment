@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E3DA5E81D4730F2006B5E97 /* EmailValidationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3DA5E71D4730F2006B5E97 /* EmailValidationProtocol.swift */; };
+		3E3DA5EA1D47590D006B5E97 /* ValidationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3DA5E91D47590D006B5E97 /* ValidationMessage.swift */; };
+		3E3DA5EC1D476C48006B5E97 /* AlphanumericProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3DA5EB1D476C48006B5E97 /* AlphanumericProtocol.swift */; };
+		3E3DA5EE1D476D11006B5E97 /* PasswordValidationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3DA5ED1D476D11006B5E97 /* PasswordValidationProtocol.swift */; };
 		3EFA342D1D26809400EB488F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFA342C1D26809400EB488F /* AppDelegate.swift */; };
 		3EFA34321D26809400EB488F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFA34301D26809400EB488F /* Main.storyboard */; };
 		3EFA34341D26809400EB488F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EFA34331D26809400EB488F /* Assets.xcassets */; };
@@ -30,6 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E3DA5E71D4730F2006B5E97 /* EmailValidationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailValidationProtocol.swift; sourceTree = "<group>"; };
+		3E3DA5E91D47590D006B5E97 /* ValidationMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationMessage.swift; sourceTree = "<group>"; };
+		3E3DA5EB1D476C48006B5E97 /* AlphanumericProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphanumericProtocol.swift; sourceTree = "<group>"; };
+		3E3DA5ED1D476D11006B5E97 /* PasswordValidationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordValidationProtocol.swift; sourceTree = "<group>"; };
 		3EFA34291D26809400EB488F /* NewLoginAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewLoginAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EFA342C1D26809400EB488F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EFA34311D26809400EB488F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,6 +102,10 @@
 				3EFA34521D2A469800EB488F /* LoginViewController.swift */,
 				3EFA34561D2A653800EB488F /* Constants.swift */,
 				3EFA34541D2A652300EB488F /* CommonUtil.swift */,
+				3E3DA5E91D47590D006B5E97 /* ValidationMessage.swift */,
+				3E3DA5E71D4730F2006B5E97 /* EmailValidationProtocol.swift */,
+				3E3DA5EB1D476C48006B5E97 /* AlphanumericProtocol.swift */,
+				3E3DA5ED1D476D11006B5E97 /* PasswordValidationProtocol.swift */,
 				3EFA34351D26809400EB488F /* LaunchScreen.storyboard */,
 				3EFA344D1D26812600EB488F /* KeychainWrapper.h */,
 				3EFA344E1D26812600EB488F /* KeychainWrapper.m */,
@@ -215,10 +227,14 @@
 			files = (
 				3EFA34531D2A469800EB488F /* LoginViewController.swift in Sources */,
 				3EFA34511D2A41E100EB488F /* MainViewController.swift in Sources */,
+				3E3DA5EA1D47590D006B5E97 /* ValidationMessage.swift in Sources */,
 				3EFA344F1D26812600EB488F /* KeychainWrapper.m in Sources */,
 				3EFA34551D2A652300EB488F /* CommonUtil.swift in Sources */,
 				3EFA342D1D26809400EB488F /* AppDelegate.swift in Sources */,
+				3E3DA5EE1D476D11006B5E97 /* PasswordValidationProtocol.swift in Sources */,
 				3EFA34571D2A653800EB488F /* Constants.swift in Sources */,
+				3E3DA5E81D4730F2006B5E97 /* EmailValidationProtocol.swift in Sources */,
+				3E3DA5EC1D476C48006B5E97 /* AlphanumericProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +431,7 @@
 				3EFA34481D26809400EB488F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3EFA34491D26809400EB488F /* Build configuration list for PBXNativeTarget "NewLoginAssignmentTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +440,7 @@
 				3EFA344B1D26809400EB488F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

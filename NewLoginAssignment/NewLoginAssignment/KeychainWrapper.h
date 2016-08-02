@@ -11,8 +11,8 @@
 
 @interface KeychainWrapper : NSObject
 
-- (void)mySetObject:(id)inObject forKey:(id)key;
-- (id)myObjectForKey:(id)key;
+- (void)setObject:(id)inObject forKey:(id)key;
+- (id)getObjectForKey:(id)key;
 - (void)writeToKeychain;
 
 @end

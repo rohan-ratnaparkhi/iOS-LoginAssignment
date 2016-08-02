@@ -6,7 +6,21 @@
 //  Copyright © 2016 Talentica. All rights reserved.
 //
 
-let actualUsername = "rohan@gmail.com"
-let actualPassword = "rohan123"
-let initialIntervalTime = 2.0
-let usernameKey = "UserName"
+
+struct Constants {
+    struct StoredAppUser {
+        static let userName = "rohan@gmail.com"
+        static let password = "rohan123"
+    }
+    
+    struct Keys {
+        static let userName = "UserName"
+    }
+    
+    struct Time {
+        static let initialIntervalTime = 2.0
+    }
+    
+}
+
+

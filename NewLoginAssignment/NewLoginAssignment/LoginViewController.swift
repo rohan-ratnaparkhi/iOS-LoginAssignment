@@ -8,49 +8,37 @@
 
 import UIKit
 
-class LoginViewController: UIViewController{
+class LoginViewController: UIViewController, EmailValidationProtocol, PasswordValidationProtocol{
  
     @IBOutlet var userName: UITextField!
     @IBOutlet var userPassword: UITextField!
     @IBOutlet var passwordVisibilityButton: UIButton!
-    let MyKeychainWrapper = KeychainWrapper()
+    let keychainWrapper = KeychainWrapper()
     var authenticationSuccessful = false
     
     @IBAction func loginWithCredentials(){
         //check and store credentials on successful login and display first screen
         //else show proper error message
-        guard let uEmail = userName.text where uEmail != "" else {
-            displaySimpleAlert("Error", message: "Email id is mandatory")
+        
+        let emailValidation = validateEmail(userName.text!)
+        let passwordValidation = validatePassword(userPassword.text!)
+        
+        guard let email = userName.text where emailValidation == ValidationMessage.Valid else {
+            displaySimpleAlert("Error", message: emailValidation.rawValue)
+            return
+        }
+        guard let password = userPassword.text where passwordValidation == ValidationMessage.Valid else {
+            displaySimpleAlert("Error", message: passwordValidation.rawValue)
             return
         }
         
-        if !CommonUtil.isEmailFormat(uEmail) {
-            displaySimpleAlert("Error", message: "Please enter a valid email id")
-            return
-        }
-        
-        guard let uPwd = userPassword.text where uPwd != "" else {
-            displaySimpleAlert("Error", message: "Password is mandatory")
-            return
-        }
-        
-        if uPwd.characters.count < 6 {
-            displaySimpleAlert("Error", message: "Password should be at least 6 characters long")
-            return
-        }
-        
-        if !CommonUtil.isPasswordAlphanumeric(uPwd) {
-            displaySimpleAlert("Error", message: "Password should be alphanumeric")
-            return
-        }
-        
-        if uEmail == actualUsername && uPwd == actualPassword {
-            NSUserDefaults.standardUserDefaults().setObject(uEmail, forKey: usernameKey)
-            MyKeychainWrapper.mySetObject(uPwd, forKey: kSecValueData)
-            MyKeychainWrapper.writeToKeychain()
+        if email == Constants.StoredAppUser.userName && password == Constants.StoredAppUser.password {
+            NSUserDefaults.standardUserDefaults().setObject(email, forKey: Constants.Keys.userName)
+            keychainWrapper.setObject(password, forKey: kSecValueData)
+            keychainWrapper.writeToKeychain()
             authenticationSuccessful = true
         } else {
-            displaySimpleAlert("Error", message: "Username / Password does not match")
+            displaySimpleAlert("Error", message: ValidationMessage.UserNamePasswordMismatch.rawValue)
             return
         }
         
@@ -74,9 +62,5 @@ class LoginViewController: UIViewController{
         }
     }
     
-    func displaySimpleAlert(title: String, message: String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        presentViewController(alert, animated: true, completion: nil)
-    }
+    
 }

@@ -87,7 +87,7 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
 }
 
 // Implement the mySetObject:forKey method, which writes attributes to the keychain:
-- (void)mySetObject:(id)inObject forKey:(id)key
+- (void)setObject:(id)inObject forKey:(id)key
 {
     if (inObject == nil) return;
     id currentObject = [_keychainData objectForKey:key];
@@ -99,7 +99,7 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
 }
 
 // Implement the myObjectForKey: method, which reads an attribute value from a dictionary:
-- (id)myObjectForKey:(id)key
+- (id)getObjectForKey:(id)key
 {
     return [_keychainData objectForKey:key];
 }
